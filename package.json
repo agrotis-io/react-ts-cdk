@@ -4,21 +4,31 @@
   "description": "React + Typescript Boilerplate",
   "main": "index.js",
   "scripts": {
-    "start": "lite-server",
+    "prebuild": "rimraf dist",
     "test": "jest",
     "storybook": "start-storybook -p 6006",
+    "build": "node scripts/build.js",
     "build-storybook": "build-storybook",
     "report-coverage": "cat ./coverage/lcov.info | codecov",
     "lint:tslint": "tslint -c tslint.json \"src/**/*.ts?(x)\"",
     "lint:prettier": "lint-staged",
-    "precommit": "npm-run-all lint:*",
+    "precommit": "npm-run-all lint:* test",
     "commit": "git add -A && git-cz",
-    "semantic-release": "semantic-release"
+    "semantic-release": "yarn run build && semantic-release"
   },
   "config": {
     "commitizen": {
       "path": "node_modules/cz-conventional-changelog"
     }
+  },
+  "release": {
+    "publish": [
+      {
+        "path": "@semantic-release/npm",
+        "pkgRoot": "dist"
+      },
+      "@semantic-release/github"
+    ]
   },
   "lint-staged": {
     "*.{ts,tsx,js,css,md}": [
@@ -44,25 +54,33 @@
   "devDependencies": {
     "@storybook/addon-actions": "^3.2.17",
     "@storybook/addon-links": "^3.2.17",
+    "@storybook/react": "^3.3.10",
     "@types/enzyme": "^3.1.6",
     "@types/enzyme-adapter-react-16": "^1.0.1",
     "@types/jest": "^21.1.9",
     "@types/react": "^16.0.31",
     "@types/react-dom": "^16.0.3",
     "@types/sinon": "^4.1.2",
-    "@types/storybook__react": "^3.0.5",
+    "@types/storybook__react": "^3.0.6",
     "awesome-typescript-loader": "^3.4.1",
+    "chalk": "^2.3.0",
     "codecov.io": "^0.1.6",
     "commitizen": "^2.9.6",
+    "cross-spawn": "^5.1.0",
     "cz-conventional-changelog": "^2.1.0",
     "danger": "^2.1.6",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "fs-extra": "^5.0.0",
     "husky": "^0.14.3",
     "jest": "^22.0.3",
     "lint-staged": "^6.0.0",
-    "lite-server": "^2.3.0",
     "npm-run-all": "^4.1.2",
     "prettier": "1.9.2",
+    "react-test-renderer": "^16.2.0",
+    "rimraf": "^2.6.2",
     "semantic-release": "^12.2.2",
+    "sinon": "^4.1.3",
     "source-map-loader": "^0.2.3",
     "ts-jest": "^22.0.0",
     "tslint": "^5.8.0",
@@ -70,13 +88,8 @@
     "typescript": "^2.6.2"
   },
   "dependencies": {
-    "@storybook/react": "^3.2.17",
-    "enzyme": "^3.2.0",
-    "enzyme-adapter-react-16": "^1.1.1",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-test-renderer": "^16.2.0",
-    "sinon": "^4.1.3"
+    "react-dom": "^16.2.0"
   },
   "jest": {
     "mapCoverage": true,
@@ -105,5 +118,8 @@
       "json",
       "node"
     ]
+  },
+  "engines": {
+    "node": ">= 8.3.0"
   }
 }

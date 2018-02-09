@@ -13,6 +13,7 @@
       "object-destructuring",
       "array-destructuring"
     ],
-    "max-line-length": [true, 80]
+    "max-line-length": [true, 80],
+    "no-implicit-dependencies": [true, "dev"]
   }
 }

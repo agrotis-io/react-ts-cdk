@@ -1,5 +1,5 @@
 import * as React from "react";
-import { IProps, IState } from './types';
+import { IProps, IState } from "./Clock.types";
 
 export default class Clock extends React.Component<IProps, IState> {
   private timeId: any;

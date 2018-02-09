@@ -11,3 +11,4 @@ script:
   - yarn danger
 after_success:
   - yarn run report-coverage
+  - yarn run semantic-release

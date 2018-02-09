@@ -1,7 +1,7 @@
 import { shallow } from "enzyme";
 import React from "react";
 import sinon from "sinon";
-import Clock from "./clock";
+import Clock from "./Clock";
 
 function formatDate(date: Date): string {
   return (
@@ -12,10 +12,10 @@ function formatDate(date: Date): string {
 }
 
 describe("Props, state & public methods", () => {
-  test("Title message to be 'Ok!'", () => {
-    const wrap: any = shallow(<Clock msg="Ok!" />);
+  test("Title message to be 'Hello World!'", () => {
+    const wrap: any = shallow(<Clock msg="Hello World!" />);
 
-    expect(wrap.find("h1").text()).toEqual("Ok!");
+    expect(wrap.find("h1").text()).toEqual("Hello World!");
   });
 
   test("Tick function set prop 'date' to current date", () => {

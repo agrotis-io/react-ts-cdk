@@ -2,16 +2,20 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
+    "outDir": "dist/",
     "sourceMap": true,
+    "declaration": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
     "noEmitOnError": true,
     "noUnusedParameters": true,
-    "watch": true,
     "jsx": "react",
     "allowSyntheticDefaultImports": true
   },
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "files": [
+    "src/components/index.ts"
+  ],
 }
