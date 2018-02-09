@@ -12,10 +12,10 @@ function formatDate(date: Date): string {
 }
 
 describe("Props, state & public methods", () => {
-  test("Title message to be 'Hello World!'", () => {
+  test("Title message to be 'Hello World! (From Clock)'", () => {
     const wrap: any = shallow(<Clock msg="Hello World!" />);
 
-    expect(wrap.find("h1").text()).toEqual("Hello World!");
+    expect(wrap.find("h1").text()).toEqual("Hello World! (From Clock)");
   });
 
   test("Tick function set prop 'date' to current date", () => {
