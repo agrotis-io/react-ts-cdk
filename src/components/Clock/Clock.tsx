@@ -29,7 +29,7 @@ export default class Clock extends React.Component<IProps, IState> {
 
     return (
       <div>
-        <h1>{msg}</h1>
+        <h1>{msg} (From Clock)</h1>
         <h2>It is {date.toLocaleTimeString()}</h2>
       </div>
     );
