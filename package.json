@@ -1,7 +1,7 @@
 {
-  "name": "react-ts-cdk",
+  "name": "vraw",
   "version": "1.0.0",
-  "description": "React + Typescript Boilerplate",
+  "description": "Vraw is a implementation of react stateless components that can be used as a npm package in your projects.",
   "main": "index.js",
   "scripts": {
     "prebuild": "rimraf dist",
@@ -38,7 +38,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/santospatrick/react-ts-cdk.git"
+    "url": "git+https://github.com/agrotis-io/vraw.git"
   },
   "keywords": [
     "react",
@@ -48,9 +48,9 @@
   "author": "Patrick Santos (http://santospatrick.github.io/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/santospatrick/react-ts-cdk/issues"
+    "url": "https://github.com/agrotis-io/vraw/issues"
   },
-  "homepage": "https://github.com/santospatrick/react-ts-cdk#readme",
+  "homepage": "https://github.com/agrotis-io/vraw#readme",
   "devDependencies": {
     "@storybook/addon-actions": "^3.2.17",
     "@storybook/addon-links": "^3.2.17",
