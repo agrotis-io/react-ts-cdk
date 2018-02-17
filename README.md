@@ -1,20 +1,17 @@
-# react-ts-cdk
+# vraw
 
 <p align="center">
     <span>
-        <img alt="license MIT" src="https://img.shields.io/github/license/santospatrick/react-ts-cdk.svg?style=flat-square">
+        <img alt="latest release" src="https://img.shields.io/github/release/agrotis-io/vraw/all.svg?style=flat-square">
     </span>
     <span>
-        <img alt="latest release" src="https://img.shields.io/github/release/santospatrick/react-ts-cdk/all.svg?style=flat-square">
+        <img alt="travis ci build status" src="https://img.shields.io/travis/agrotis-io/vraw/master.svg?style=flat-square">
     </span>
     <span>
-        <img alt="travis ci build status" src="https://img.shields.io/travis/santospatrick/react-ts-cdk/master.svg?style=flat-square">
+        <img alt="percentage of code coverage by tests" src="https://img.shields.io/codecov/c/github/agrotis-io/vraw/master.svg?style=flat-square">
     </span>
     <span>
-        <img alt="percentage of code coverage by tests" src="https://img.shields.io/codecov/c/github/santospatrick/react-ts-cdk/master.svg?style=flat-square">
-    </span>
-    <span>
-        <img alt="minimum node version" src="https://img.shields.io/node/v/react-ts-cdk.svg?style=flat-square">
+        <img alt="minimum node version" src="https://img.shields.io/node/v/vraw.svg?style=flat-square">
     </span>
     <span>
         <img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square">
@@ -27,9 +24,36 @@
     </span>
 </p>
 
-> 🔥 React + Typescript Boilerplate to develop your own react components and reuse in another projects
+> 🌱 Vraw is a implementation of react stateless components that can be used as a npm package in your projects.
 
-![React Typescript Component Development Kit](images/intro.jpg)
+![Vraw Logomark with text "vraw" under the symbol](images/intro.jpg)
+
+## Usage
+
+using npm:
+
+```bash
+$ npm install vraw --save
+```
+
+in code:
+
+```jsx
+import React, { Component } from "react";
+// importing Clock component
+import { Clock } from "vraw";
+
+class App extends Component {
+  render() {
+    return (
+      // using Clock component
+      <Clock msg="It works!" date={new Date()} />
+    );
+  }
+}
+
+export default App;
+```
 
 ## Motivation
 
@@ -55,30 +79,6 @@ Components are cool! We should use them everywhere. So, you expent time developi
 |    └── index.js                       # Exporting all Componentss
 ```
 
-## Usage
-
-1. Fork it!
-2. install dependencies:
-
-```
-yarn install
-```
-
-3. Create your account in TravisCI & Code Coverage
-4. Configure TravisCI environment variables `DANGER_GITHUB_API_TOKEN`, `GH_TOKEN` & `NPM_TOKEN` with right permissions (you can find in their websites) for repo access to release new versions & intercept in pull requests
-5. Make sure you have these options checked in TravisCI:
-
-![React Typescript Component Development Kit](images/travisci-options.png)
-
-6. Follow [contributing](#contributing)
-7. in your project, run the following:
-
-```
-yarn add https://github.com/yourusername/react-ts-cdk
-```
-
-8. import your components developed in this repo & use them!
-
 ## Features
 
 * [x] React
@@ -95,19 +95,3 @@ yarn add https://github.com/yourusername/react-ts-cdk
 [See presentation](http://slides.com/santospatrick/react-typescript-cdk/fullscreen)
 
 ![Repository Workflow](images/workflow.png)
-
-## Contributing
-
-1. Fork it!
-2. install dependencies: `yarn install`
-3. Maybe use storybook to test your component in its final UI version: `yarn run storybook`
-4. If using storybook, then open `localhost:6006` to get a hot module replacement environment to visualize your component after every file saved
-5. Create your feature branch: `git checkout -b my-new-feature`
-6. Check our [workflow](#workflow) (it will help you understand how you should develop your feature), if you haven't yet.
-7. Commit your changes: `yarn run commit`
-8. Push to the branch: `git push origin my-new-feature`
-9. Submit a pull request :smile:
-
-## License
-
-[MIT](https://github.com/santospatrick/react-ts-cdk/blob/master/LICENSE)
