@@ -6,7 +6,7 @@ To get started, follow the instructions in this document.
 
 ## Report a bug fix
 
-To report a bug fix, follow the issue template found when openning a new issue, if possible and available attach a [codesandbox](https://codesandbox.io/) or [jsBin](https://codesandbox.io/) with the error being reported.
+To report a bug fix, follow the issue template found when openning a new issue, if possible and available attach a [codesandbox](https://codesandbox.io/) or [jsBin](https://jsbin.com/?js,output) with the error being reported.
 
 ## Propose a Feature
 
@@ -45,19 +45,29 @@ In order to start colaborating to our project, you have to **FORK** this reposit
 This will help you understand how you should develop your contribution to the repository:
 
 ![Repository Workflow](images/workflow.png)
+[See presentation of the workflow](http://slides.com/santospatrick/react-typescript-cdk/fullscreen)
 
 ## Install Dependencies
 
 After getting the repository locally in your machine, you have to install all the dependencies in order to run and start contributing.
 
-To install everything you need, go to the folder you cloned the repository and run: _yarn install_
+To install everything you need, go to the folder you cloned the repository and run:
+
+```bash
+yarn install
+```
 
 ## Testing your Component
 
 If your contribution is a new component, or a modification in an existing one, you might test it's final UI version with Storybook.
 
-To test the component, type this command in the project's folder location: _yarn run storybook_
-After running the command, go to localhost:6006 in your favorite browser and look for the component you created or changed
+To test the component, type this command in the project's folder location:
+
+```bash
+yarn run storybook
+```
+
+After running the command, go to **localhost:6006** in your favorite browser and look for the component you created or changed
 
 ## Branch Organization
 
@@ -73,14 +83,22 @@ After creating a new branch, the next step is commiting your changes to the remo
 
 The process here is a litlle bit different (as you could see in our development workflow) of a regular commit and push approach.
 
-Add the files you want to commit, and type the following command: _yarn run commit_
+Add the files you want to commit, and type the following command:
+
+```bash
+yarn run commit
+```
 
 Carefully read and follow the instructions to finish your commit.
 
-After commiting, push to the remote branch you previously created: _git push origin my-new-branch_
+After commiting, push to the remote branch you previously created:
+
+```bash
+git push origin my-new-branch
+```
 
 ## Pull Request
 
-Last but not least, verify if your chnages were pushed to your remote branch.
+Last but not least, verify if your changes were pushed to your remote branch.
 
 If everything is as expected, create a new pull request at GitHub.
