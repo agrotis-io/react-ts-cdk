@@ -1,8 +1,76 @@
-import { message, danger, warn } from "danger";
+import { danger, fail, markdown, message, schedule, warn } from "danger";
 
 const removeAtSymbols = string => {
   return string.replace(/@/g, "");
 };
+
+// Fails if commit messages aren't complying with conventions
+const commitLint = commit => {
+  // Convention: <header><blank line><body><blank line><footer>
+  // where <header> = <type>(<scope>): <subject> or <type>: <subject>
+
+  const headerRegex = /^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.{1,}\))?: (.{1,})/;
+
+  const { msg, sha } = commit;
+  const commitIdentificator = `Commit ${sha}`;
+  const errorMessage =
+    `${commitIdentificator} message does not comply with` +
+    ` the conventional-changelog-standard conventions.`;
+
+  if (!msg) {
+    return `${commitIdentificator} has no commit message`;
+  }
+
+  // checks for <header>
+  if (!headerRegex.test(msg)) {
+    return (
+      `${errorMessage} Line #1 should be \`<type>(<scope>): <subject>\` or ` +
+      `\`<type>: <subject>\`.`
+    );
+  }
+
+  const msgLines = msg.split("\n");
+  const hasTextRegex = /([^\W\_]){1,}/;
+
+  // checks for <blank line> between <header> and <body>
+  if (msgLines.length > 1 && msgLines[1] !== "") {
+    return `${errorMessage} Line #2 should be \`<blank line>\`.`;
+  }
+
+  // checks for <body>
+  if (msgLines.length > 2 && !hasTextRegex.test(msgLines[2])) {
+    return `${errorMessage} Line #3 should be \`<body>\` (with text).`;
+  }
+
+  // checks for <blank line> between <body> and <footer>
+  if (msgLines.length > 3 && msgLines[3] !== "") {
+    return `${errorMessage} Line #4 should be \`<blank line>\`.`;
+  }
+
+  // checks for <footer>
+  if (msgLines.length > 4 && !hasTextRegex.test(msgLines[4])) {
+    return `${errorMessage} Line #3 should be \`<footer>\` with text.`;
+  }
+
+  return undefined;
+};
+
+// Converts danger.github.commits to simple objects
+const commits = danger.github.commits.map(obj => ({
+  sha: obj.sha,
+  msg: obj.commit.message
+}));
+
+const commitErrors = commits.map(commitLint);
+// If any of the commit messages of this PR isn't in complicance with the rules
+if (commitErrors.some(e => e !== undefined)) {
+  // Fail the build
+  commitErrors.forEach(error => {
+    if (error !== undefined) {
+      fail(error);
+    }
+  });
+}
 
 // Checks if yarn.lock is changed when package.json was modified and vice-versa
 const packageChanged = danger.git.modified_files.includes("package.json");
